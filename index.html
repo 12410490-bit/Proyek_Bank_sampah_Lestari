@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tahap 5: Implementasi Sistem - Bank Sampah Airmadidi</title>
-    <!-- Framework CSS & Icon Sets -->
+    <title>Tahap 4: Desain & Prototipe Interaktif - Bank Sampah Airmadidi</title>
+    <!-- CSS Framework & Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Pembungkam Warning CDN Tailwind -->
     <script>
         const originalWarn = console.warn;
         console.warn = function(...args) {
@@ -17,312 +13,59 @@
             originalWarn.apply(console, args);
         };
     </script>
-    
-    <!-- Link CSS buatan sendiri -->
-    <link rel="stylesheet" href="styles.css?v=5">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Hubungkan ke file CSS buatan sendiri -->
+    <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans pb-12">
 
-    <!-- Header Navbar -->
+    <!-- Header / Navbar Utama -->
     <header class="bg-emerald-800 border-b border-emerald-600 sticky top-0 z-50 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
             <div>
                 <span class="text-xs font-bold text-emerald-300 uppercase tracking-widest">Bank Sampah — Kelurahan Airmadidi</span>
-                <h1 class="text-2xl font-black text-white">Tahap 5: Pelaporan Implementasi & Deploy</h1>
+                <h1 class="text-2xl font-black text-white">Dokumen Tahap 4: Perancangan & Prototipe Interaktif</h1>
             </div>
             <div class="flex items-center gap-3 text-xs bg-emerald-950 p-2.5 rounded-lg border border-emerald-700">
                 <div>
                     <p class="font-bold text-emerald-200">TIM 9 (YTTA)</p>
-                    <p class="text-slate-300">Status: Deployed & Fully Interactive</p>
+                    <p class="text-slate-300">Status Sistem: Interaktif Fully Separated</p>
                 </div>
-                <span class="bg-emerald-500 text-emerald-950 font-extrabold px-2 py-1 rounded">LIVE</span>
+                <span class="bg-emerald-500 text-emerald-950 font-extrabold px-2 py-1 rounded">FINAL</span>
             </div>
         </div>
     </header>
 
-    <!-- Navigasi Tab Utama -->
+    <!-- Tombol Navigasi Pindah Tab / Modul -->
     <nav class="max-w-7xl mx-auto px-4 pt-6">
         <div class="flex flex-wrap gap-2 border-b border-slate-700 pb-3">
-            <button onclick="switchTab('tab-ui')" id="btn-ui" class="tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-emerald-600 text-white">
-                <i class="fa-solid fa-desktop mr-1"></i> 1. Uji Aplikasi Interaktif (Aktor)
-            </button>
-            <button onclick="switchTab('tab-arsitektur')" id="btn-arsitektur" class="tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700">
-                <i class="fa-solid fa-sitemap mr-1"></i> 2. Arsitektur Live
+            <button onclick="switchTab('tab-arsitektur')" id="btn-arsitektur" class="tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-emerald-600 text-white">
+                <i class="fa-solid fa-sitemap mr-1"></i> 1. Arsitektur Sistem
             </button>
             <button onclick="switchTab('tab-database')" id="btn-database" class="tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700">
-                <i class="fa-solid fa-database mr-1"></i> 3. Database SQL
+                <i class="fa-solid fa-database mr-1"></i> 2. Skema Database (SQL)
+            </button>
+            <button onclick="switchTab('tab-ui')" id="btn-ui" class="tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700">
+                <i class="fa-solid fa-desktop mr-1"></i> 3. Demo Mockup UI Interaktif
             </button>
             <button onclick="switchTab('tab-matriks')" id="btn-matriks" class="tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700">
-                <i class="fa-solid fa-list-check mr-1"></i> 4. Matriks Traceability
+                <i class="fa-solid fa-list-check mr-1"></i> 4. Matriks Keterlacakan
             </button>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto px-4 py-6">
-<!-- ================= MODUL 2: ARSITEKTUR ================= -->
-        <section id="tab-arsitektur" class="tab-content hidden bg-slate-800 rounded-xl border border-slate-700 p-6 shadow-2xl space-y-6">
+<!-- ================= MODUL 1: ARSITEKTUR ================= -->
+        <section id="tab-arsitektur" class="tab-content bg-slate-800 rounded-xl border border-slate-700 p-6 shadow-2xl space-y-6">
             <div class="border-b border-slate-700 pb-4">
                 <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
-                    <i class="fa-solid fa-sitemap"></i> 2. Diagram Arsitektur Sistem 3-Tier Layer
+                    <i class="fa-solid fa-sitemap"></i> 1. Diagram Arsitektur Sistem (Frontend, Backend, Database, Hosting)
                 </h2>
-                <p class="text-xs text-slate-400 mt-1">Menggambarkan alur data teknis aplikasi web yang sudah di-deploy secara live.</p>
+                <p class="text-xs text-slate-400 mt-1">Menggambarkan alur data teknis aplikasi web Bank Sampah Kelurahan Airmadidi.</p>
             </div>
 
-            <div class="bg-slate-950 p-6 rounded-lg border border-slate-800 overflow-x-auto flex justify-center">
-                <pre class="mermaid">
-flowchart TD
-    subgraph USER["1. USER LAYER"]
-        U1["Laptop Pengurus"]
-        U2["Smartphone Warga"]
-    end
-
-    subgraph FRONTEND["2. FRONTEND LAYER"]
-        F1["HTML5 / CSS3 / Tailwind"]
-        F2["JavaScript REST Client"]
-        F3["Responsive UI Views"]
-    end
-
-    subgraph BACKEND["3. BACKEND LAYER"]
-        B1["RESTful API Controller"]
-        R1["Hitung Otomatis Berat x Harga"]
-        R2["Potong Kas 10 Persen dan Saldo Netto 90 Persen"]
-        R3["Validasi Penarikan Minimum Rp 50.000"]
-        R4["Kalkulasi Susut Gudang Penjualan"]
-    end
-
-    subgraph DATABASE["4. DATABASE LAYER"]
-        D1[("MySQL Relational Database")]
-        T1["Tabel NASABAH dan PENGURUS"]
-        T2["TRANSAKSI_SETOR Netto 90 Persen"]
-        T3["PENARIKAN_SALDO dan KAS"]
-        T4["DETAIL_PENJUALAN Susut"]
-    end
-
-    subgraph HOSTING["5. HOSTING DAN DEPLOYMENT"]
-        H1["GitHub Pages / Cloud VPS"]
-    end
-
-    U1 --> F1
-    U2 --> F3
-    F1 --> B1
-    F2 --> B1
-    F3 --> B1
-    B1 --> R1
-    B1 --> R2
-    B1 --> R3
-    B1 --> R4
-    B1 --> D1
-    D1 --> T1
-    D1 --> T2
-    D1 --> T3
-    D1 --> T4
-    F1 -.-> H1
-    B1 -.-> H1
-                </pre>
-            </div>
-        </section>
-
-            <!-- UI PAGE 1: FORM LOGIN MULTI-ROLE -->
-            <div id="page-login" class="ui-page max-w-md mx-auto bg-slate-100 text-slate-800 rounded-xl p-6 shadow-2xl border border-slate-300">
-                <div class="text-center mb-6">
-                    <div class="bg-emerald-700 text-white w-12 h-12 rounded-full inline-flex items-center justify-center text-2xl mb-2 shadow">
-                        <i class="fa-solid fa-recycle"></i>
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-lg">Bank Sampah Airmadidi</h4>
-                    <p class="text-xs text-slate-500">Silakan Login Sesuai Hak Akses Peran (Aktor)</p>
-                </div>
-                
-                <form id="form-login-app" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Username / No. Buku Tabungan</label>
-                        <input type="text" id="input-username" value="BSL-089" required class="w-full text-xs p-2.5 border rounded-lg bg-white focus:outline-emerald-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Kata Sandi / PIN</label>
-                        <input type="password" id="input-password" value="123456" required class="w-full text-xs p-2.5 border rounded-lg bg-white focus:outline-emerald-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Pilih Peran Akses (Role)</label>
-                        <select id="select-role" class="w-full text-xs p-2.5 border rounded-lg bg-white font-bold text-emerald-800 focus:outline-emerald-600">
-                            <option value="nasabah">1. Nasabah Warga (Mobile View HP)</option>
-                            <option value="petugas">2. Petugas Timbang (Form Setor Sampah)</option>
-                            <option value="bendahara">3. Bendahara (Form Cairkan Saldo)</option>
-                            <option value="ketua">4. Ketua Bank Sampah (Dashboard Stok & Laporan)</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs shadow-md transition duration-200">
-                        <i class="fa-solid fa-right-to-bracket mr-1"></i> MASUK KE SISTEM
-                    </button>
-                </form>
-            </div>
-
-            <!-- UI PAGE 2: DASHBOARD NASABAH (MOBILE VIEW) -->
-            <div id="page-nasabah" class="ui-page hidden flex flex-col items-center">
-                <div class="w-full flex justify-between items-center mb-4 max-w-sm">
-                    <span class="text-xs font-bold text-emerald-400"><i class="fa-solid fa-mobile-screen mr-1"></i> Tampilan HP Nasabah</span>
-                    <button onclick="logout()" class="text-xs bg-red-600 text-white px-2.5 py-1 rounded hover:bg-red-700"><i class="fa-solid fa-power-off"></i> Keluar</button>
-                </div>
-                <div class="mobile-screen bg-slate-950 p-3 shadow-2xl">
-                    <div class="bg-slate-50 h-full w-full rounded-[24px] overflow-hidden flex flex-col justify-between text-slate-800">
-                        <div class="bg-emerald-700 text-white p-4 pt-6">
-                            <p class="text-[10px] uppercase font-bold text-emerald-200">Bank Sampah Airmadidi</p>
-                            <h4 class="font-extrabold text-sm" id="nasabah-nama">Halo, Ibu Maria!</h4>
-                            <p class="text-[10px] text-emerald-100">No. Buku: BSL-089</p>
-                        </div>
-                        <div class="p-4 space-y-3 flex-1 text-xs">
-                            <div class="bg-emerald-800 text-white p-3.5 rounded-xl shadow">
-                                <p class="text-[9px] text-emerald-200">TOTAL SALDO AKTIF TABUNGAN</p>
-                                <p class="text-2xl font-black my-0.5" id="saldo-display">Rp 147.500</p>
-                                <p class="text-[8px] text-emerald-300">*Sudah dipotong 10% kas operasional</p>
-                            </div>
-                            <div>
-                                <p class="font-bold text-slate-700 mb-1.5 text-[11px]">Riwayat Transaksi Terbaru</p>
-                                <div class="space-y-1.5 text-[10px]">
-                                    <div class="bg-white p-2 rounded border flex justify-between items-center shadow-sm">
-                                        <div><p class="font-bold">Setoran Plastik & Kardus</p><p class="text-slate-400">10 Nov 2026</p></div>
-                                        <span class="font-bold text-emerald-700">+ Rp 22.500</span>
-                                    </div>
-                                    <div class="bg-white p-2 rounded border flex justify-between items-center shadow-sm">
-                                        <div><p class="font-bold">Penarikan Saldo Tunai</p><p class="text-slate-400">28 Okt 2026</p></div>
-                                        <span class="font-bold text-red-600">- Rp 50.000</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white border-t p-2.5 flex justify-around text-center text-[9px] text-slate-500 font-bold">
-                            <div class="text-emerald-700 cursor-pointer" onclick="alert('Anda berada di Beranda Saldo')"><i class="fa-solid fa-house block text-sm"></i> Beranda</div>
-                            <div class="cursor-pointer" onclick="alert('Fitur Mutasi Transaksi Lengkap')"><i class="fa-solid fa-clock-rotate-left block text-sm"></i> Riwayat</div>
-                            <div class="cursor-pointer" onclick="alert('Daftar Harga Sampah: Plastik Rp 2.500/kg, Kardus Rp 1.500/kg')"><i class="fa-solid fa-tags block text-sm"></i> Harga</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- UI PAGE 3: PETUGAS TIMBANG -->
-            <div id="page-petugas" class="ui-page hidden max-w-2xl mx-auto bg-slate-100 text-slate-800 rounded-xl p-6 shadow-xl">
-                <div class="flex justify-between items-center border-b pb-3 mb-4">
-                    <h3 class="font-bold text-slate-900 text-base"><i class="fa-solid fa-scale-balanced text-emerald-700 mr-1"></i> Form Setoran Sampah (Petugas Timbang)</h3>
-                    <button onclick="logout()" class="text-xs bg-red-600 text-white px-2.5 py-1 rounded hover:bg-red-700">Keluar</button>
-                </div>
-                
-                <div class="space-y-4 text-xs">
-                    <div>
-                        <label class="block font-bold mb-1">Cari / Pilih Nasabah</label>
-                        <select class="w-full p-2 border rounded bg-white font-bold">
-                            <option>BSL-089 - Ibu Maria (Saldo: Rp 147.500)</option>
-                            <option>BSL-012 - Pak Robby (Saldo: Rp 180.000)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="bg-white p-3 rounded border">
-                        <p class="font-bold mb-2 text-slate-700">Input Berat Penimbangan Sampah:</p>
-                        <div class="grid grid-cols-2 gap-2 mb-2">
-                            <div>
-                                <label>Botol Plastik (Rp 2.500/kg)</label>
-                                <input type="number" id="input-plastik" value="4" class="w-full p-1.5 border rounded text-center font-bold">
-                            </div>
-                            <div>
-                                <label>Kardus Bekas (Rp 1.500/kg)</label>
-                                <input type="number" id="input-kardus" value="10" class="w-full p-1.5 border rounded text-center font-bold">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-emerald-50 p-3 rounded border border-emerald-300 space-y-1">
-                        <div class="flex justify-between"><span>Nilai Bruto Kotor:</span><span id="txt-bruto" class="font-bold">Rp 25.000</span></div>
-                        <div class="flex justify-between text-amber-800"><span>Potongan Kas (10%):</span><span id="txt-kas" class="font-bold">- Rp 2.500</span></div>
-                        <hr class="border-emerald-200">
-                        <div class="flex justify-between text-emerald-900 font-extrabold text-sm"><span>Saldo Netto Nasabah (90%):</span><span id="txt-netto">+ Rp 22.500</span></div>
-                    </div>
-
-                    <button onclick="simpanSetoranAlert()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded shadow transition">
-                        <i class="fa-solid fa-save mr-1"></i> SIMPAN TRANSAKSI SETORAN
-                    </button>
-                </div>
-            </div>
-
-            <!-- UI PAGE 4: BENDAHARA -->
-            <div id="page-bendahara" class="ui-page hidden max-w-md mx-auto bg-slate-100 text-slate-800 rounded-xl p-6 shadow-xl">
-                <div class="flex justify-between items-center border-b pb-3 mb-4">
-                    <h3 class="font-bold text-slate-900 text-base"><i class="fa-solid fa-hand-holding-dollar text-blue-700 mr-1"></i> Form Penarikan Saldo (Bendahara)</h3>
-                    <button onclick="logout()" class="text-xs bg-red-600 text-white px-2.5 py-1 rounded hover:bg-red-700">Keluar</button>
-                </div>
-                
-                <div class="space-y-4 text-xs">
-                    <div>
-                        <label class="block font-bold mb-1">Pilih Nasabah Penarik</label>
-                        <select class="w-full p-2 border rounded bg-white font-bold">
-                            <option>BSL-012 - Pak Robby (Saldo: Rp 180.000)</option>
-                            <option>BSL-089 - Ibu Maria (Saldo: Rp 147.500)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block font-bold mb-1">Nominal Penarikan (Rp)</label>
-                        <input type="number" id="input-tarik" value="50000" class="w-full p-2.5 border rounded font-extrabold text-blue-900 text-base">
-                    </div>
-                    <div class="bg-blue-50 border border-blue-200 p-2.5 rounded text-blue-900 text-[11px]">
-                        <p class="font-bold"><i class="fa-solid fa-circle-info"></i> Validasi Sistem:</p>
-                        <p>• Minimal Rp 50.000 & 1x Penarikan per Bulan.</p>
-                    </div>
-                    <button onclick="prosesPenarikan()" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2.5 rounded shadow transition">
-                        <i class="fa-solid fa-check-circle mr-1"></i> PROSES CAIRKAN SALDO
-                    </button>
-                </div>
-            </div>
-
-            <!-- UI PAGE 5: KETUA -->
-            <div id="page-ketua" class="ui-page hidden max-w-3xl mx-auto bg-slate-100 text-slate-800 rounded-xl p-6 shadow-xl">
-                <div class="flex justify-between items-center border-b pb-3 mb-4">
-                    <h3 class="font-bold text-slate-900 text-base"><i class="fa-solid fa-chart-line text-emerald-800 mr-1"></i> Dashboard Ketua Bank Sampah</h3>
-                    <button onclick="logout()" class="text-xs bg-red-600 text-white px-2.5 py-1 rounded hover:bg-red-700">Keluar</button>
-                </div>
-                
-                <div class="space-y-4 text-xs">
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="bg-white p-3 rounded border">
-                            <p class="text-slate-500">Stok Gudang Sampah</p>
-                            <p class="text-xl font-bold text-slate-900">485.5 Kg</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border">
-                            <p class="text-slate-500">Kas Operasional (10%)</p>
-                            <p class="text-xl font-bold text-emerald-800">Rp 1.450.000</p>
-                        </div>
-                    </div>
-                    <div class="bg-white p-3 rounded border">
-                        <p class="font-bold mb-2">Penjualan Sampah ke Pengepul (Susut Gudang)</p>
-                        <table class="w-full text-left border">
-                            <thead class="bg-slate-200">
-                                <tr>
-                                    <th class="p-1.5 border">Jenis</th>
-                                    <th class="p-1.5 border">Timbang Pengepul</th>
-                                    <th class="p-1.5 border text-red-600">Susut</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="p-1.5 border">Botol Plastik</td>
-                                    <td class="p-1.5 border">115.0 Kg</td>
-                                    <td class="p-1.5 border font-bold text-red-600">5.0 Kg</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <button onclick="alert('Laporan Bulanan PDF Siap Dicetak!')" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded shadow transition">
-                        <i class="fa-solid fa-print mr-1"></i> CETAK LAPORAN BULANAN KELURAHAN
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= MODUL 2: ARSITEKTUR ================= -->
-        <section id="tab-arsitektur" class="tab-content hidden bg-slate-800 rounded-xl border border-slate-700 p-6 shadow-2xl space-y-6">
-            <div class="border-b border-slate-700 pb-4">
-                <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
-                    <i class="fa-solid fa-sitemap"></i> 2. Diagram Arsitektur Sistem 3-Tier Layer
-                </h2>
-                <p class="text-xs text-slate-400 mt-1">Menggambarkan alur data teknis aplikasi web yang sudah di-deploy secara live.</p>
-            </div>
-
+            <!-- Area Render Diagram Visual Mermaid -->
             <div class="bg-slate-950 p-6 rounded-lg border border-slate-800 overflow-x-auto flex justify-center">
                 <pre class="mermaid">
 flowchart TD
@@ -377,14 +120,14 @@ flowchart TD
             </div>
         </section>
 
-        <!-- ================= MODUL 3: DATABASE ================= -->
+        <!-- ================= MODUL 2: DATABASE ================= -->
         <section id="tab-database" class="tab-content hidden bg-slate-800 rounded-xl border border-slate-700 p-6 shadow-2xl space-y-6">
             <div class="border-b border-slate-700 pb-4 flex justify-between items-center">
                 <div>
                     <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
-                        <i class="fa-solid fa-database"></i> 3. Skema Database Physical (DDL SQL Script)
+                        <i class="fa-solid fa-database"></i> 2. Skema Database Physical (DDL SQL Script)
                     </h2>
-                    <p class="text-xs text-slate-400 mt-1">Struktur tabel MySQL Relational Engine.</p>
+                    <p class="text-xs text-slate-400 mt-1">Struktur tabel MySQL sesuai aturan bisnis SRS Tahap 2.</p>
                 </div>
                 <button onclick="salinSQL()" class="bg-emerald-700 hover:bg-emerald-600 text-white text-xs px-3 py-1.5 rounded flex items-center gap-1 font-semibold">
                     <i class="fa-solid fa-copy"></i> Salin Kode SQL
@@ -418,9 +161,7 @@ CREATE TABLE TRANSAKSI_SETOR (
     tanggal_setor DATETIME DEFAULT CURRENT_TIMESTAMP,
     total_bruto_rp DECIMAL(12,2) NOT NULL,
     potongan_kas_rp DECIMAL(12,2) NOT NULL,
-    total_netto_rp DECIMAL(12,2) NOT NULL,
-    FOREIGN KEY (id_nasabah) REFERENCES NASABAH(id_nasabah),
-    FOREIGN KEY (id_petugas) REFERENCES PENGURUS_USER(id_user)
+    total_netto_rp DECIMAL(12,2) NOT NULL
 );
 
 CREATE TABLE PENARIKAN_SALDO (
@@ -428,11 +169,210 @@ CREATE TABLE PENARIKAN_SALDO (
     id_nasabah INT NOT NULL,
     id_bendahara INT NOT NULL,
     tanggal_tarik DATETIME DEFAULT CURRENT_TIMESTAMP,
-    jumlah_tarik_rp DECIMAL(12,2) NOT NULL,
-    FOREIGN KEY (id_nasabah) REFERENCES NASABAH(id_nasabah),
-    FOREIGN KEY (id_bendahara) REFERENCES PENGURUS_USER(id_user)
+    jumlah_tarik_rp DECIMAL(12,2) NOT NULL
 );
             </pre>
+        </section>
+
+        <!-- ================= MODUL 3: DEMO MOCKUP UI ================= -->
+        <section id="tab-ui" class="tab-content hidden bg-slate-800 rounded-xl border border-slate-700 p-6 shadow-2xl space-y-6">
+            <div class="border-b border-slate-700 pb-4">
+                <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
+                    <i class="fa-solid fa-desktop"></i> 3. Prototipe Aplikasi Interaktif (Simulasi Pindah Peran & Halaman)
+                </h2>
+                <p class="text-xs text-slate-400 mt-1">Silakan klik login atau tombol navigasi di bawah untuk mencoba simulasi alur aplikasi secara langsung!</p>
+            </div>
+
+            <!-- UI PAGE 1: FORM LOGIN -->
+            <div id="page-login" class="ui-page max-w-md mx-auto bg-slate-100 text-slate-800 rounded-xl p-6 shadow-2xl border border-slate-300">
+                <div class="text-center mb-6">
+                    <div class="bg-emerald-700 text-white w-12 h-12 rounded-full inline-flex items-center justify-center text-2xl mb-2 shadow">
+                        <i class="fa-solid fa-recycle"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-lg">Bank Sampah Airmadidi</h4>
+                    <p class="text-xs text-slate-500">Silakan Login Sesuai Hak Akses Peran</p>
+                </div>
+                
+                <form id="form-login-app" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Username / No. Buku Tabungan</label>
+                        <input type="text" id="input-username" value="BSL-089" required class="w-full text-xs p-2.5 border rounded-lg bg-white focus:outline-emerald-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Kata Sandi / PIN</label>
+                        <input type="password" value="123456" required class="w-full text-xs p-2.5 border rounded-lg bg-white focus:outline-emerald-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Pilih Peran Akses (Role)</label>
+                        <select id="select-role" class="w-full text-xs p-2.5 border rounded-lg bg-white font-bold text-emerald-800 focus:outline-emerald-600">
+                            <option value="nasabah">Nasabah Warga (Mobile View HP)</option>
+                            <option value="petugas">Petugas Timbang (Form Setor Sampah)</option>
+                            <option value="bendahara">Bendahara (Form Cairkan Saldo)</option>
+                            <option value="ketua">Ketua Bank Sampah (Dashboard Stok & Laporan)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg text-xs shadow-md transition duration-200">
+                        <i class="fa-solid fa-right-to-bracket mr-1"></i> MASUK KE SISTEM
+                    </button>
+                </form>
+            </div>
+
+            <!-- UI PAGE 2: DASHBOARD NASABAH (MOBILE VIEW) -->
+            <div id="page-nasabah" class="ui-page hidden flex flex-col items-center">
+                <div class="w-full flex justify-between items-center mb-4 max-w-sm">
+                    <span class="text-xs font-bold text-emerald-400"><i class="fa-solid fa-mobile-screen mr-1"></i> Tampilan HP Nasabah</span>
+                    <button onclick="logout()" class="text-xs bg-red-600 text-white px-2.5 py-1 rounded"><i class="fa-solid fa-power-off"></i> Keluar</button>
+                </div>
+                <div class="mobile-screen bg-slate-950 p-3 shadow-2xl">
+                    <div class="bg-slate-50 h-full w-full rounded-[24px] overflow-hidden flex flex-col justify-between text-slate-800">
+                        <div class="bg-emerald-700 text-white p-4 pt-6">
+                            <p class="text-[10px] uppercase font-bold text-emerald-200">Bank Sampah Airmadidi</p>
+                            <h4 class="font-extrabold text-sm" id="nasabah-nama">Halo, Ibu Maria!</h4>
+                            <p class="text-[10px] text-emerald-100">No. Buku: BSL-089</p>
+                        </div>
+                        <div class="p-4 space-y-3 flex-1 text-xs">
+                            <div class="bg-emerald-800 text-white p-3.5 rounded-xl shadow">
+                                <p class="text-[9px] text-emerald-200">TOTAL SALDO AKTIF TABUNGAN</p>
+                                <p class="text-2xl font-black my-0.5" id="saldo-display">Rp 147.500</p>
+                                <p class="text-[8px] text-emerald-300">*Sudah dipotong 10% kas operasional</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-700 mb-1.5 text-[11px]">Riwayat Transaksi Terbaru</p>
+                                <div class="space-y-1.5 text-[10px]">
+                                    <div class="bg-white p-2 rounded border flex justify-between items-center">
+                                        <div><p class="font-bold">Setoran Plastik & Kardus</p><p class="text-slate-400">10 Nov 2026</p></div>
+                                        <span class="font-bold text-emerald-700">+ Rp 22.500</span>
+                                    </div>
+                                    <div class="bg-white p-2 rounded border flex justify-between items-center">
+                                        <div><p class="font-bold">Penarikan Saldo Tunai</p><p class="text-slate-400">28 Okt 2026</p></div>
+                                        <span class="font-bold text-red-600">- Rp 50.000</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white border-t p-2.5 flex justify-around text-center text-[9px] text-slate-500 font-bold">
+                            <div class="text-emerald-700"><i class="fa-solid fa-house block text-sm"></i> Beranda</div>
+                            <div><i class="fa-solid fa-clock-rotate-left block text-sm"></i> Riwayat</div>
+                            <div><i class="fa-solid fa-tags block text-sm"></i> Harga</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UI PAGE 3: PETUGAS TIMBANG -->
+            <div id="page-petugas" class="ui-page hidden max-w-2xl mx-auto bg-slate-100 text-slate-800 rounded-xl p-6 shadow-xl">
+                <div class="flex justify-between items-center border-b pb-3 mb-4">
+                    <h3 class="font-bold text-slate-900 text-base"><i class="fa-solid fa-scale-balanced text-emerald-700 mr-1"></i> Form Setoran Sampah (Petugas Timbang)</h3>
+                    <button onclick="logout()" class="text-xs bg-red-600 text-white px-2.5 py-1 rounded">Keluar</button>
+                </div>
+                
+                <div class="space-y-4 text-xs">
+                    <div>
+                        <label class="block font-bold mb-1">Cari / Pilih Nasabah</label>
+                        <select class="w-full p-2 border rounded bg-white font-bold">
+                            <option>BSL-089 - Ibu Maria (Saldo: Rp 147.500)</option>
+                            <option>BSL-012 - Pak Robby (Saldo: Rp 180.000)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="bg-white p-3 rounded border">
+                        <p class="font-bold mb-2 text-slate-700">Input Berat Penimbangan Sampah:</p>
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                            <div>
+                                <label>Botol Plastik (Rp 2.500/kg)</label>
+                                <input type="number" id="input-plastik" value="4" class="w-full p-1.5 border rounded text-center font-bold">
+                            </div>
+                            <div>
+                                <label>Kardus Bekas (Rp 1.500/kg)</label>
+                                <input type="number" id="input-kardus" value="10" class="w-full p-1.5 border rounded text-center font-bold">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-emerald-50 p-3 rounded border border-emerald-300 space-y-1">
+                        <div class="flex justify-between"><span>Nilai Bruto Kotor:</span><span id="txt-bruto" class="font-bold">Rp 25.000</span></div>
+                        <div class="flex justify-between text-amber-800"><span>Potongan Kas (10%):</span><span id="txt-kas" class="font-bold">- Rp 2.500</span></div>
+                        <hr class="border-emerald-200">
+                        <div class="flex justify-between text-emerald-900 font-extrabold text-sm"><span>Saldo Netto Nasabah (90%):</span><span id="txt-netto">+ Rp 22.500</span></div>
+                    </div>
+
+                    <button onclick="simpanSetoranAlert()" class="w-full bg-emerald-700 text-white font-bold py-2.5 rounded shadow">
+                        <i class="fa-solid fa-save mr-1"></i> SIMPAN TRANSAKSI SETORAN
+                    </button>
+                </div>
+            </div>
+
+            <!-- UI PAGE 4: BENDAHARA -->
+            <div id="page-bendahara" class="ui-page hidden max-w-md mx-auto bg-slate-100 text-slate-800 rounded-xl p-6 shadow-xl">
+                <div class="flex justify-between items-center border-b pb-3 mb-4">
+                    <h3 class="font-bold text-slate-900 text-base"><i class="fa-solid fa-hand-holding-dollar text-blue-700 mr-1"></i> Form Penarikan Saldo (Bendahara)</h3>
+                    <button onclick="logout()" class="text-xs bg-red-600 text-white px-2.5 py-1 rounded">Keluar</button>
+                </div>
+                
+                <div class="space-y-4 text-xs">
+                    <div>
+                        <label class="block font-bold mb-1">Pilih Nasabah Penarik</label>
+                        <select class="w-full p-2 border rounded bg-white font-bold">
+                            <option>BSL-012 - Pak Robby (Saldo: Rp 180.000)</option>
+                            <option>BSL-089 - Ibu Maria (Saldo: Rp 147.500)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1">Nominal Penarikan (Rp)</label>
+                        <input type="number" id="input-tarik" value="50000" class="w-full p-2.5 border rounded font-extrabold text-blue-900 text-base">
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 p-2.5 rounded text-blue-900 text-[11px]">
+                        <p class="font-bold"><i class="fa-solid fa-circle-info"></i> Validasi Sistem:</p>
+                        <p>• Minimal Rp 50.000 & 1x Penarikan per Bulan.</p>
+                    </div>
+                    <button onclick="prosesPenarikan()" class="w-full bg-blue-700 text-white font-bold py-2.5 rounded shadow">
+                        <i class="fa-solid fa-check-circle mr-1"></i> PROSES CAIRKAN SALDO
+                    </button>
+                </div>
+            </div>
+
+            <!-- UI PAGE 5: KETUA -->
+            <div id="page-ketua" class="ui-page hidden max-w-3xl mx-auto bg-slate-100 text-slate-800 rounded-xl p-6 shadow-xl">
+                <div class="flex justify-between items-center border-b pb-3 mb-4">
+                    <h3 class="font-bold text-slate-900 text-base"><i class="fa-solid fa-chart-line text-emerald-800 mr-1"></i> Dashboard Ketua Bank Sampah</h3>
+                    <button onclick="logout()" class="text-xs bg-red-600 text-white px-2.5 py-1 rounded">Keluar</button>
+                </div>
+                
+                <div class="space-y-4 text-xs">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-white p-3 rounded border">
+                            <p class="text-slate-500">Stok Gudang Sampah</p>
+                            <p class="text-xl font-bold text-slate-900">485.5 Kg</p>
+                        </div>
+                        <div class="bg-white p-3 rounded border">
+                            <p class="text-slate-500">Kas Operasional (10%)</p>
+                            <p class="text-xl font-bold text-emerald-800">Rp 1.450.000</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded border">
+                        <p class="font-bold mb-2">Penjualan Sampah ke Pengepul (Susut Gudang)</p>
+                        <table class="w-full text-left border">
+                            <thead class="bg-slate-200">
+                                <tr>
+                                    <th class="p-1.5 border">Jenis</th>
+                                    <th class="p-1.5 border">Timbang Pengepul</th>
+                                    <th class="p-1.5 border text-red-600">Susut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-1.5 border">Botol Plastik</td>
+                                    <td class="p-1.5 border">115.0 Kg</td>
+                                    <td class="p-1.5 border font-bold text-red-600">5.0 Kg</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button onclick="alert('Laporan PDF Siap Dicetak!')" class="w-full bg-slate-800 text-white font-bold py-2 rounded">
+                        <i class="fa-solid fa-print mr-1"></i> CETAK LAPORAN BULANAN KELURAHAN
+                    </button>
+                </div>
+            </div>
         </section>
 
         <!-- ================= MODUL 4: MATRIKS ================= -->
@@ -447,8 +387,8 @@ CREATE TABLE PENARIKAN_SALDO (
                 <table class="w-full text-xs text-left border border-slate-700">
                     <thead class="bg-slate-900 text-emerald-400 font-bold border-b border-slate-700">
                         <tr>
-                            <th class="p-2.5 border border-slate-700">ID Req</th>
-                            <th class="p-2.5 border border-slate-700">Deskripsi Kebutuhan Bisnis</th>
+                            <th class="p-2.5 border border-slate-700">ID Kebutuhan</th>
+                            <th class="p-2.5 border border-slate-700">Deskripsi</th>
                             <th class="p-2.5 border border-slate-700">Tabel Database</th>
                             <th class="p-2.5 border border-slate-700">Komponen UI / Page</th>
                         </tr>
@@ -456,27 +396,21 @@ CREATE TABLE PENARIKAN_SALDO (
                     <tbody class="divide-y divide-slate-700 text-slate-200">
                         <tr>
                             <td class="p-2.5 border border-slate-700 font-mono text-emerald-300">REQ-01</td>
-                            <td class="p-2.5 border border-slate-700">Pengelolaan Nasabah & Pengurus</td>
-                            <td class="p-2.5 border border-slate-700 font-mono">NASABAH, PENGURUS_USER</td>
-                            <td class="p-2.5 border border-slate-700">Form Login & Select Nasabah</td>
+                            <td class="p-2.5 border border-slate-700">Pengelolaan Nasabah</td>
+                            <td class="p-2.5 border border-slate-700 font-mono">NASABAH</td>
+                            <td class="p-2.5 border border-slate-700">Form Petugas Timbang</td>
                         </tr>
                         <tr>
                             <td class="p-2.5 border border-slate-700 font-mono text-emerald-300">REQ-02</td>
-                            <td class="p-2.5 border border-slate-700">Login Multi-Role Interaktif</td>
+                            <td class="p-2.5 border border-slate-700">Login Multi-Role</td>
                             <td class="p-2.5 border border-slate-700 font-mono">PENGURUS_USER</td>
                             <td class="p-2.5 border border-slate-700">Form Login Multi-Role</td>
                         </tr>
                         <tr>
-                            <td class="p-2.5 border border-slate-700 font-mono text-emerald-300">REQ-03</td>
-                            <td class="p-2.5 border border-slate-700">Kalkulasi 10% Kas & 90% Saldo Netto</td>
+                            <td class="p-2.5 border border-slate-700 font-mono text-emerald-300">REQ-05</td>
+                            <td class="p-2.5 border border-slate-700">Kalkulasi 10% Kas & 90% Saldo</td>
                             <td class="p-2.5 border border-slate-700 font-mono">TRANSAKSI_SETOR</td>
                             <td class="p-2.5 border border-slate-700">Form Setor & Mobile HP</td>
-                        </tr>
-                        <tr>
-                            <td class="p-2.5 border border-slate-700 font-mono text-emerald-300">REQ-04</td>
-                            <td class="p-2.5 border border-slate-700">Validasi Penarikan Saldo (Min. Rp 50.000)</td>
-                            <td class="p-2.5 border border-slate-700 font-mono">PENARIKAN_SALDO</td>
-                            <td class="p-2.5 border border-slate-700">Form Bendahara</td>
                         </tr>
                     </tbody>
                 </table>
@@ -485,7 +419,7 @@ CREATE TABLE PENARIKAN_SALDO (
 
     </main>
 
-    <!-- Script Utama -->
-    <script src="script.js?v=5"></script>
+    <!-- Hubungkan ke file Script buatan sendiri -->
+    <script src="script.js"></script>
 </body>
 </html>
