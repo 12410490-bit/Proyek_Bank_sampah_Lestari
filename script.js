@@ -1,14 +1,14 @@
-// Inisialisasi saat halaman selesai dimuat
+// Inisialisasi Diagram Mermaid saat pertama kali dibuka
 document.addEventListener("DOMContentLoaded", function() {
-    if (typeof mermaid !== 'undefined') {
-        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
-    }
+    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
 
+    // Tambah Event Listener untuk Form Login
     const formLogin = document.getElementById('form-login-app');
     if (formLogin) {
         formLogin.addEventListener('submit', prosesLogin);
     }
 
+    // Tambah Event Listener untuk Input Hitung Sampah
     const inputPlastik = document.getElementById('input-plastik');
     const inputKardus = document.getElementById('input-kardus');
     if (inputPlastik && inputKardus) {
@@ -17,43 +17,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// Pindah Tab Utama & Auto-Render Diagram Mermaid
+// Fungsi Pindah Tab Navigasi Utama (1..4)
 function switchTab(tabId) {
-    // 1. Sembunyikan semua tab
     document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-    
-    // 2. Reset warna tombol tab
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('bg-emerald-600', 'text-white');
         btn.classList.add('bg-slate-800', 'text-slate-400');
     });
 
-    // 3. Tampilkan tab yang dipilih
-    const selectedTab = document.getElementById(tabId);
-    if (selectedTab) {
-        selectedTab.classList.remove('hidden');
-    }
-
-    // 4. Highlight tombol aktif
+    document.getElementById(tabId).classList.remove('hidden');
     const activeBtn = document.getElementById('btn-' + tabId.replace('tab-', ''));
     if (activeBtn) {
         activeBtn.classList.remove('bg-slate-800', 'text-slate-400');
         activeBtn.classList.add('bg-emerald-600', 'text-white');
     }
-
-    // 5. PAKSA MERMAID RENDERING SAAT TAB ARSITEKTUR DIKLIK
-    if (tabId === 'tab-arsitektur' && typeof mermaid !== 'undefined') {
-        setTimeout(() => {
-            mermaid.run({
-                querySelector: '.mermaid'
-            });
-        }, 150);
-    }
 }
 
-// Logika Proses Login & Ganti Peran (Aktor)
+// Fungsi Logika Simulasi Login
 function prosesLogin(event) {
-    if (event) event.preventDefault();
+    event.preventDefault();
     const role = document.getElementById('select-role').value;
     const username = document.getElementById('input-username').value;
 
@@ -71,13 +53,13 @@ function prosesLogin(event) {
     }
 }
 
-// Keluar / Kembali ke Form Login
+// Fungsi Logika Keluar (Logout)
 function logout() {
     document.querySelectorAll('.ui-page').forEach(el => el.classList.add('hidden'));
     document.getElementById('page-login').classList.remove('hidden');
 }
 
-// Kalkulator Realtime Sampah (90% Saldo & 10% Kas)
+// Logika Perhitungan Otomatis Setoran Sampah (90% Saldo & 10% Kas)
 function hitungSetoran() {
     const kgPlastik = parseFloat(document.getElementById('input-plastik').value) || 0;
     const kgKardus = parseFloat(document.getElementById('input-kardus').value) || 0;
@@ -91,7 +73,7 @@ function hitungSetoran() {
     document.getElementById('txt-netto').innerText = "+ Rp " + netto.toLocaleString('id-ID');
 }
 
-// Validasi Penarikan Saldo Minimal Rp 50.000
+// Logika Validasi Penarikan Saldo
 function prosesPenarikan() {
     const nominal = parseFloat(document.getElementById('input-tarik').value) || 0;
     if (nominal < 50000) {
@@ -105,7 +87,7 @@ function simpanSetoranAlert() {
     alert("Setoran Berhasil Disimpan ke Database!");
 }
 
-// Salin Kode SQL
+// Fungsi Copy Kode SQL Script
 function salinSQL() {
     const code = document.getElementById('sqlCode').innerText;
     navigator.clipboard.writeText(code);
