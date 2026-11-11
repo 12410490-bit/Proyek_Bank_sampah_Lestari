@@ -60,16 +60,67 @@
 
     <main class="max-w-7xl mx-auto px-4 py-6">
 
-        <!-- ================= MODUL 1: UJI APLIKASI INTERAKTIF ================= -->
-        <section id="tab-ui" class="tab-content bg-slate-800 rounded-xl border border-slate-700 p-6 shadow-2xl space-y-6">
-            <div class="border-b border-slate-700 pb-4 flex flex-wrap justify-between items-center gap-2">
-                <div>
-                    <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
-                        <i class="fa-solid fa-desktop"></i> Simulasi Aplikasi Web Interaktif (Aktivasi Peran / Aktor)
-                    </h2>
-                    <p class="text-xs text-slate-400 mt-1">Gunakan tombol login atau shortcut pilihan aktor di bawah untuk langsung mencoba modul.</p>
-                </div>
+       <!-- ================= MODUL 2: ARSITEKTUR ================= -->
+        <section id="tab-arsitektur" class="tab-content hidden bg-slate-800 rounded-xl border border-slate-700 p-6 shadow-2xl space-y-6">
+            <div class="border-b border-slate-700 pb-4">
+                <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
+                    <i class="fa-solid fa-sitemap"></i> 2. Diagram Arsitektur Sistem 3-Tier Layer
+                </h2>
+                <p class="text-xs text-slate-400 mt-1">Menggambarkan alur data teknis aplikasi web yang sudah di-deploy secara live.</p>
             </div>
+
+            <div class="bg-slate-950 p-6 rounded-lg border border-slate-800 overflow-x-auto flex justify-center">
+                <pre class="mermaid">
+flowchart TD
+    subgraph USER["1. USER LAYER (PENGGUNA)"]
+        U1["Laptop Pengurus (Petugas / Bendahara / Ketua)"]
+        U2["Smartphone Warga (Cek Saldo Nasabah)"]
+    end
+
+    subgraph FRONTEND["2. FRONTEND LAYER (UI WEB)"]
+        F1["HTML5 / CSS3 / Tailwind"]
+        F2["JavaScript REST Client"]
+        F3["Responsive UI Views"]
+    end
+
+    subgraph BACKEND["3. BACKEND LAYER (LOGIKA API)"]
+        B1["RESTful API Controller"]
+        R1["Hitung Otomatis Berat x Harga"]
+        R2["Potong Kas 10% dan Netto Saldo 90%"]
+        R3["Validasi Penarikan Min Rp 50.000"]
+        R4["Kalkulasi Susut Gudang per 2 Minggu"]
+    end
+
+    subgraph DATABASE["4. DATABASE LAYER (STORAGE)"]
+        D1[("MySQL Relational Database")]
+        T1["Tabel NASABAH & PENGURUS"]
+        T2["TRANSAKSI_SETOR (Netto 90%)"]
+        T3["PENARIKAN_SALDO & KAS"]
+        T4["DETAIL_PENJUALAN (Susut)"]
+    end
+
+    subgraph HOSTING["5. HOSTING & DEPLOYMENT"]
+        H1["Vercel / Render / Cloud VPS"]
+    end
+
+    U1 -->|HTTPS Request| F1
+    U2 -->|HTTPS Request| F3
+    F1 -->|Deployed on| H1
+    F1 -->|JSON API Request| B1
+    F2 -->|JSON API Request| B1
+    F3 -->|JSON API Request| B1
+    B1 -->|SQL Queries PDO| D1
+    B1 --> R1
+    B1 --> R2
+    B1 --> R3
+    B1 --> R4
+    D1 --> T1
+    D1 --> T2
+    D1 --> T3
+    D1 --> T4
+                </pre>
+            </div>
+        </section>
 
             <!-- UI PAGE 1: FORM LOGIN MULTI-ROLE -->
             <div id="page-login" class="ui-page max-w-md mx-auto bg-slate-100 text-slate-800 rounded-xl p-6 shadow-2xl border border-slate-300">
