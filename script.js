@@ -25,11 +25,22 @@ function switchTab(tabId) {
         btn.classList.add('bg-slate-800', 'text-slate-400');
     });
 
-    document.getElementById(tabId).classList.remove('hidden');
+    const selectedTab = document.getElementById(tabId);
+    if (selectedTab) {
+        selectedTab.classList.remove('hidden');
+    }
+
     const activeBtn = document.getElementById('btn-' + tabId.replace('tab-', ''));
     if (activeBtn) {
         activeBtn.classList.remove('bg-slate-800', 'text-slate-400');
         activeBtn.classList.add('bg-emerald-600', 'text-white');
+    }
+
+    // PAKSA MERMAID RENDERING DIAGRAM SAAT TAB ARSITEKTUR DIKLIK
+    if (tabId === 'tab-arsitektur' && typeof mermaid !== 'undefined') {
+        setTimeout(() => {
+            mermaid.run({ querySelector: '.mermaid' });
+        }, 150);
     }
 }
 
