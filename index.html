@@ -51,16 +51,82 @@
 
     <main class="max-w-7xl mx-auto px-4 py-6">
 
-        <!-- ================= MODUL 1: UJI APLIKASI INTERAKTIF ================= -->
-        <section id="tab-ui" class="tab-content bg-slate-800 rounded-xl border border-slate-700 p-6 shadow-2xl space-y-6">
-            <div class="border-b border-slate-700 pb-4 flex flex-wrap justify-between items-center gap-2">
-                <div>
-                    <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
-                        <i class="fa-solid fa-desktop"></i> Simulasi Aplikasi Web Interaktif (Aktivasi Peran / Aktor)
-                    </h2>
-                    <p class="text-xs text-slate-400 mt-1">Gunakan tombol login atau shortcut pilihan aktor di bawah untuk langsung mencoba modul.</p>
-                </div>
+       <!-- ================= MODUL 2: ARSITEKTUR ================= -->
+        <section id="tab-arsitektur" class="tab-content hidden bg-slate-800 rounded-xl border border-slate-700 p-6 shadow-2xl space-y-6">
+            <div class="border-b border-slate-700 pb-4">
+                <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
+                    <i class="fa-solid fa-sitemap"></i> 2. Diagram Arsitektur Sistem 3-Tier Layer
+                </h2>
+                <p class="text-xs text-slate-400 mt-1">Menggambarkan alur data teknis aplikasi web yang sudah di-deploy secara live.</p>
             </div>
+
+            <!-- Tampilan Visual Diagram Arsitektur Interaktif (HTML/SVG Clean) -->
+            <div class="bg-slate-950 p-6 rounded-xl border border-slate-700 space-y-6 text-xs">
+                
+                <!-- Layer 1: User Layer -->
+                <div class="bg-slate-900 border border-slate-700 p-4 rounded-lg">
+                    <p class="font-extrabold text-emerald-400 text-sm mb-2"><i class="fa-solid fa-users mr-1"></i> 1. USER LAYER (PENGGUNA)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="bg-slate-800 p-3 rounded border border-slate-600 flex items-center gap-3">
+                            <i class="fa-solid fa-laptop text-xl text-emerald-400"></i>
+                            <div>
+                                <p class="font-bold text-slate-200">Laptop Pengurus</p>
+                                <p class="text-[11px] text-slate-400">Akses Petugas Timbang, Bendahara, &amp; Ketua</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800 p-3 rounded border border-slate-600 flex items-center gap-3">
+                            <i class="fa-solid fa-mobile-screen-button text-xl text-emerald-400"></i>
+                            <div>
+                                <p class="font-bold text-slate-200">Smartphone Warga</p>
+                                <p class="text-[11px] text-slate-400">Cek Mandiri Saldo &amp; Mutasi Tabungan Nasabah</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center text-emerald-500 font-bold text-base"><i class="fa-solid fa-arrow-down"></i> Protocol: HTTPS Request</div>
+
+                <!-- Layer 2: Frontend Layer -->
+                <div class="bg-slate-900 border border-slate-700 p-4 rounded-lg">
+                    <p class="font-extrabold text-blue-400 text-sm mb-2"><i class="fa-solid fa-code mr-1"></i> 2. FRONTEND LAYER (UI WEB)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-center">
+                        <div class="bg-slate-800 p-2.5 rounded border border-slate-600 font-bold text-slate-200">HTML5 / CSS3 / Tailwind</div>
+                        <div class="bg-slate-800 p-2.5 rounded border border-slate-600 font-bold text-slate-200">JS REST Client</div>
+                        <div class="bg-slate-800 p-2.5 rounded border border-slate-600 font-bold text-slate-200">Responsive UI Views</div>
+                    </div>
+                </div>
+
+                <div class="text-center text-blue-400 font-bold text-base"><i class="fa-solid fa-arrow-down"></i> JSON API / REST Endpoints</div>
+
+                <!-- Layer 3: Backend & Rules Layer -->
+                <div class="bg-slate-900 border border-slate-700 p-4 rounded-lg">
+                    <p class="font-extrabold text-amber-400 text-sm mb-2"><i class="fa-solid fa-gears mr-1"></i> 3. BACKEND LAYER (LOGIKA API &amp; RULES)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="bg-slate-800 p-2.5 rounded border border-slate-600 text-slate-300">• Hitung Otomatis Berat x Harga</div>
+                        <div class="bg-slate-800 p-2.5 rounded border border-slate-600 text-slate-300">• Potong Kas 10% &amp; Saldo Netto 90%</div>
+                        <div class="bg-slate-800 p-2.5 rounded border border-slate-600 text-slate-300">• Validasi Penarikan Saldo Min Rp 50.000</div>
+                        <div class="bg-slate-800 p-2.5 rounded border border-slate-600 text-slate-300">• Kalkulasi Susut Gudang Penjualan</div>
+                    </div>
+                </div>
+
+                <div class="text-center text-amber-400 font-bold text-base"><i class="fa-solid fa-arrow-down"></i> Relational SQL Queries</div>
+
+                <!-- Layer 4 & 5: Database & Hosting -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-slate-900 border border-slate-700 p-4 rounded-lg">
+                        <p class="font-extrabold text-purple-400 text-sm mb-2"><i class="fa-solid fa-database mr-1"></i> 4. DATABASE LAYER</p>
+                        <p class="text-slate-300 font-bold mb-1">MySQL Relational Engine</p>
+                        <p class="text-[11px] text-slate-400">Tabel NASABAH, PENGURUS_USER, TRANSAKSI_SETOR, &amp; PENARIKAN_SALDO</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-700 p-4 rounded-lg">
+                        <p class="font-extrabold text-teal-400 text-sm mb-2"><i class="fa-solid fa-cloud-arrow-up mr-1"></i> 5. HOSTING &amp; DEPLOYMENT</p>
+                        <p class="text-slate-300 font-bold mb-1">GitHub Pages / Vercel Cloud Hosting</p>
+                        <p class="text-[11px] text-slate-400">Live URL: 12410490-bit.github.io/Proyek_Bank_sampah_Lestari</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>>
 
             <!-- UI PAGE 1: FORM LOGIN MULTI-ROLE -->
             <div id="page-login" class="ui-page max-w-md mx-auto bg-slate-100 text-slate-800 rounded-xl p-6 shadow-2xl border border-slate-300">
