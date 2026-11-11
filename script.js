@@ -18,22 +18,39 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// Pindah Tab Utama
+// Pindah Tab Utama & Auto-Render Mermaid
 function switchTab(tabId) {
+    // 1. Sembunyikan semua tab
     document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+    
+    // 2. Reset warna semua tombol tab
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('bg-emerald-600', 'text-white');
         btn.classList.add('bg-slate-800', 'text-slate-400');
     });
 
-    document.getElementById(tabId).classList.remove('hidden');
+    // 3. Tampilkan tab yang dipilih
+    const selectedTab = document.getElementById(tabId);
+    if (selectedTab) {
+        selectedTab.classList.remove('hidden');
+    }
+
+    // 4. Highlight tombol aktif
     const activeBtn = document.getElementById('btn-' + tabId.replace('tab-', ''));
     if (activeBtn) {
         activeBtn.classList.remove('bg-slate-800', 'text-slate-400');
         activeBtn.classList.add('bg-emerald-600', 'text-white');
     }
-}
 
+    // 5. PAKSA MERMAID UNTUK RENDERING DIAGRAM SAAT TAB ARSITEKTUR DIKLIK
+    if (tabId === 'tab-arsitektur' && typeof mermaid !== 'undefined') {
+        setTimeout(() => {
+            mermaid.run({
+                nodes: document.querySelectorAll('.mermaid')
+            });
+        }, 100);
+    }
+}
 // Logika Proses Login & Ganti Aktor
 function prosesLogin(event) {
     if (event) event.preventDefault();
