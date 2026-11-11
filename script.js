@@ -1,15 +1,14 @@
 // Inisialisasi saat halaman selesai dimuat
 document.addEventListener("DOMContentLoaded", function() {
-    // Jalankan Mermaid Diagram
-    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    if (typeof mermaid !== 'undefined') {
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    }
 
-    // Hubungkan Form Login
     const formLogin = document.getElementById('form-login-app');
     if (formLogin) {
         formLogin.addEventListener('submit', prosesLogin);
     }
 
-    // Hubungkan Event Hitung Sampah Otomatis
     const inputPlastik = document.getElementById('input-plastik');
     const inputKardus = document.getElementById('input-kardus');
     if (inputPlastik && inputKardus) {
@@ -18,23 +17,41 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// Pindah Tab Utama
+// Pindah Tab Utama & Auto-Render Diagram Mermaid
 function switchTab(tabId) {
+    // 1. Sembunyikan semua tab
     document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+    
+    // 2. Reset warna tombol tab
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('bg-emerald-600', 'text-white');
         btn.classList.add('bg-slate-800', 'text-slate-400');
     });
 
-    document.getElementById(tabId).classList.remove('hidden');
+    // 3. Tampilkan tab yang dipilih
+    const selectedTab = document.getElementById(tabId);
+    if (selectedTab) {
+        selectedTab.classList.remove('hidden');
+    }
+
+    // 4. Highlight tombol aktif
     const activeBtn = document.getElementById('btn-' + tabId.replace('tab-', ''));
     if (activeBtn) {
         activeBtn.classList.remove('bg-slate-800', 'text-slate-400');
         activeBtn.classList.add('bg-emerald-600', 'text-white');
     }
+
+    // 5. PAKSA MERMAID RENDERING SAAT TAB ARSITEKTUR DIKLIK
+    if (tabId === 'tab-arsitektur' && typeof mermaid !== 'undefined') {
+        setTimeout(() => {
+            mermaid.run({
+                querySelector: '.mermaid'
+            });
+        }, 150);
+    }
 }
 
-// Logika Proses Login & Ganti Aktor
+// Logika Proses Login & Ganti Peran (Aktor)
 function prosesLogin(event) {
     if (event) event.preventDefault();
     const role = document.getElementById('select-role').value;
@@ -88,7 +105,7 @@ function simpanSetoranAlert() {
     alert("Setoran Berhasil Disimpan ke Database!");
 }
 
-// Copy Code SQL
+// Salin Kode SQL
 function salinSQL() {
     const code = document.getElementById('sqlCode').innerText;
     navigator.clipboard.writeText(code);
