@@ -250,48 +250,48 @@
             </div>
         </section>
 
-        <!-- ================= MODUL 2: ARSITEKTUR ================= -->
+     <!-- ================= MODUL 2: ARSITEKTUR ================= -->
         <section id="tab-arsitektur" class="tab-content hidden bg-slate-800 rounded-xl border border-slate-700 p-6 shadow-2xl space-y-6">
             <div class="border-b border-slate-700 pb-4">
                 <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
-                    <i class="fa-solid fa-sitemap"></i> 2. Diagram Arsitektur Sistem (Frontend, Backend, Database, Hosting)
+                    <i class="fa-solid fa-sitemap"></i> 2. Diagram Arsitektur Sistem 3-Tier Layer
                 </h2>
-                <p class="text-xs text-slate-400 mt-1">Menggambarkan alur data teknis aplikasi web Bank Sampah Kelurahan Airmadidi.</p>
+                <p class="text-xs text-slate-400 mt-1">Menggambarkan alur data teknis aplikasi web yang sudah di-deploy secara live.</p>
             </div>
 
             <!-- Area Render Diagram Visual Mermaid -->
             <div class="bg-slate-950 p-6 rounded-lg border border-slate-800 overflow-x-auto flex justify-center">
                 <pre class="mermaid">
 flowchart TD
-    subgraph USER["1. USER LAYER (PENGGUNA)"]
-        U1["Laptop Pengurus (Petugas / Bendahara / Ketua)"]
-        U2["Smartphone Warga (Cek Saldo Nasabah)"]
+    subgraph USER["1. USER LAYER"]
+        U1["Laptop Pengurus"]
+        U2["Smartphone Warga"]
     end
 
-    subgraph FRONTEND["2. FRONTEND LAYER (UI WEB)"]
+    subgraph FRONTEND["2. FRONTEND LAYER"]
         F1["HTML5 / CSS3 / Tailwind"]
         F2["JavaScript REST Client"]
         F3["Responsive UI Views"]
     end
 
-    subgraph BACKEND["3. BACKEND LAYER (LOGIKA API)"]
+    subgraph BACKEND["3. BACKEND LAYER"]
         B1["RESTful API Controller"]
         R1["Hitung Otomatis Berat x Harga"]
-        R2["Potong Kas 10% dan Netto Saldo 90%"]
+        R2["Potong Kas 10 Persen & Netto Saldo 90 Persen"]
         R3["Validasi Penarikan Min Rp 50.000"]
         R4["Kalkulasi Susut Gudang per 2 Minggu"]
     end
 
-    subgraph DATABASE["4. DATABASE LAYER (STORAGE)"]
+    subgraph DATABASE["4. DATABASE LAYER"]
         D1[("MySQL Relational Database")]
         T1["Tabel NASABAH & PENGURUS"]
-        T2["TRANSAKSI_SETOR (Netto 90%)"]
+        T2["TRANSAKSI_SETOR Netto 90 Persen"]
         T3["PENARIKAN_SALDO & KAS"]
-        T4["DETAIL_PENJUALAN (Susut)"]
+        T4["DETAIL_PENJUALAN Susut"]
     end
 
     subgraph HOSTING["5. HOSTING & DEPLOYMENT"]
-        H1["Vercel / Render / Cloud VPS"]
+        H1["GitHub Pages / Cloud VPS"]
     end
 
     U1 --> F1
@@ -308,8 +308,8 @@ flowchart TD
     D1 --> T2
     D1 --> T3
     D1 --> T4
-    F1 --> H1
-    B1 --> H1
+    F1 -.-> H1
+    B1 -.-> H1
                 </pre>
             </div>
         </section>
