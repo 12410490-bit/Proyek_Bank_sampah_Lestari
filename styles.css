@@ -1,0 +1,38 @@
+/* Tampilan Mockup HP Mobile Nasabah */
+.mobile-screen {
+    width: 360px;
+    height: 700px;
+    border-radius: 36px;
+    border: 12px solid #1f2937;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Memperbesar Diagram Mermaid Arsitektur */
+.mermaid {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.mermaid svg {
+    width: 100% !important;
+    min-width: 800px !important;
+    height: auto !important;
+    min-height: 480px !important;
+}
+
+/* Transisi Pindah Tab/Layar */
+.ui-page, .tab-content {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
